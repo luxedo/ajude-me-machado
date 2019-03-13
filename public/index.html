@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
   <title>Welcome to Firebase Hosting</title>
 
   <!-- update the version number as needed -->
@@ -16,14 +17,49 @@
   <!-- initialize the SDK after all desired features are loaded -->
   <script defer src="/__/firebase/init.js"></script>
 
-  <link rel="stylesheet" href="/palette.css">
+  <script src="/assets/js/script.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/palette.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
-<body class="bg-color-primary-1">
-  <h1>Ajude-me Machado!</h1>
-  <textarea class="bg-color-primary-1" name="texto" rows="50" cols="80">
-
-  </textarea>
+<body onload="checkQuery();">
+  <div class="container">
+    <header class="item">
+      <h1 class="titulo">Ajude-me, Machado!</h1>
+    </header>
+    <div class="content item">
+      <textarea
+        id="texto"
+        class="texto material"
+        name="texto"
+        rows=3
+        autofocus
+        onkeyup="textAreaAdjust(this)"
+        placeholder="Era uma vez..."></textarea>
+    </div>
+    <div class="buttons item">
+      <button class="material material-hover botao primario">Ajude-me, Machado!</button>
+      <!-- <button class="material material-hover botao secundario">Dica</button> -->
+    </div>
+    <footer class="item">
+      <p>
+        <a href="https://github.com/luxedo/tetris-almost-from-scratch">
+          <img src="assets/img/GitHub-Mark-32px.png" /><span>Confira no GitHub!</span>
+        </a>
+      </p>
+      <p>
+        Copyright (c) 2019 Luiz Eduardo Amaral -
+        &lt;<a href="mailto:luizamaral306@gmail.com?Subject=ajude-me-machado">luizamaral306@gmail.com</a>&gt;
+      </p>
+      <p>
+        Esse software está numa licensa
+        <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU GPL3</a>. Se divirta!
+        <span style="font-size: 2em; vertical-align: top;">😉</span>
+      </p>
+    </footer>
+  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

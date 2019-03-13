@@ -1,0 +1,129 @@
+html, body {
+  font-family: 'Old Standard TT', serif;
+  background-color: var(--color-primary-1);
+  color: var(--color-primary-3);
+  background-image: url("/assets/img/machado-de-assis.png");
+  background-repeat: no-repeat;
+  background-position: bottom -200px right -200px;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+::selection {
+  background: var(--color-secondary-2-0);
+}
+::-moz-selection {
+  background: var(--color-secondary-2-0);
+}
+
+header h1 {
+  margin-top: 0;
+}
+
+.titulo {
+  font-family: Impact;
+  font-size: 2.5em;
+}
+
+.titulo::first-letter {
+  font-size: 300%;
+}
+
+.container {
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-row-gap: 1em;
+  grid-column-gap: 0;
+  grid-template-rows: auto 1fr 1fr auto;
+}
+
+@media (min-width: 600px) {
+  .titulo {
+    font-size: 3.5em;
+  }
+  .container {
+    grid-template-columns: auto 480px auto;
+    grid-template-rows: auto 1fr 1fr auto;
+  }
+}
+
+@media (min-width: 900px) {
+  .titulo {
+    font-size: 3.5em;
+  }
+  .container {
+    grid-template-columns: auto 640px auto;
+    grid-template-rows: auto 1fr 1fr auto;
+  }
+}
+
+.item {
+  grid-column: 2 / 3;
+}
+
+.texto {
+  border: none;
+  outline: 0;
+  width: 90%;
+  resize: none;
+  font-family: 'Old Standard TT', serif;
+  font-size: 1.2em;
+  background-color: rgba(var(--color-primary-2-rgb), 0.50);
+  color: var(--color-primary-4);
+  padding: 0;
+  padding: 5%;
+  overflow: hidden;
+}
+
+p::first-letter {
+  font-weight: bold;
+  text-transform: uppercase;
+  /* font-size: 500% */
+  font-size: 2em;
+}
+
+
+.material {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.material-hover:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.botao {
+  border: none;
+  /* font-family: 'Old Standard TT', serif; */
+  padding: 1em 2em;
+  text-align: center;
+  text-decoration: none;
+  outline: 0;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.primario {
+  background-color: var(--color-secondary-1-3);
+  color: var(--color-primary-1);
+}
+
+.secundario {
+  background-color: var(--color-primary-2);
+  color: var(--color-secondary-1-3);
+}
+
+.botao:active {
+  box-shadow: 0 10px 14px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transform: translateY(2px);
+}
+
+footer p {
+  text-align: center;
+}
+
+footer a {
+  color: var(--color-primary-4);
+}
