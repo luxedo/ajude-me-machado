@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
-  <title>Welcome to Firebase Hosting</title>
+  <title>Ajude-me Machado!</title>
 
   <!-- update the version number as needed -->
   <script defer src="/__/firebase/5.8.6/firebase-app.js"></script>
@@ -17,6 +17,8 @@
   <!-- initialize the SDK after all desired features are loaded -->
   <script defer src="/__/firebase/init.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+
   <script src="/assets/js/script.js"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
@@ -24,24 +26,27 @@
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 
-<body onload="checkQuery();">
+<body onload="carregado();">
   <div class="container">
     <header class="item">
       <h1 class="titulo">Ajude-me, Machado!</h1>
     </header>
     <div class="content item">
-      <textarea
+        <div
         id="texto"
-        class="texto material"
-        name="texto"
-        rows=3
-        autofocus
-        onkeyup="textAreaAdjust(this)"
-        placeholder="Era uma vez..."></textarea>
+        class="texto material primary-2-bg-alpha"
+        contenteditable="true"
+        placeholder="Era uma vez..."
+        autofocus></div>
+
+        <div id="citar" class="material primary-2-bg-alpha citar" style="display: none;">
+          <span class="quo">&ldquo;</span><span id="citar-texto"></span><span class="quo">&rdquo;</span>
+        <div style="text-align: right;">&mdash; <span id="autor"></span> Machado LSTM</div>
+        </div>
     </div>
     <div class="buttons item">
-      <button class="material material-hover botao primario">Ajude-me, Machado!</button>
-      <!-- <button class="material material-hover botao secundario">Dica</button> -->
+      <button class="material material-hover botao primario" onclick="ajuda()">Ajude-me, Machado!</button>
+      <button class="material material-hover botao secundario" onclick="apagar()">Apagar</button>
     </div>
     <footer class="item">
       <p>
@@ -54,7 +59,7 @@
         &lt;<a href="mailto:luizamaral306@gmail.com?Subject=ajude-me-machado">luizamaral306@gmail.com</a>&gt;
       </p>
       <p>
-        Esse software está numa licensa
+        Esse software está numa licença
         <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU GPL3</a>. Se divirta!
         <span style="font-size: 2em; vertical-align: top;">😉</span>
       </p>

@@ -1,21 +1,35 @@
-// Applied globally on all textareas with the "autoExpand" class
-const textAreaAdjust = (el) => {
-  el.setAttribute("rows", 3);
-  growArea(el);
-}
-
-const growArea = (el) => {
-  const isOverflowing = el.clientWidth < el.scrollWidth || el.clientHeight < el.scrollHeight;
-  const rows = parseInt(el.getAttribute("rows"));
-  if (isOverflowing) {
-    el.setAttribute("rows", rows+1);
-    growArea(el);
-  }
-}
-
-const checkQuery = () => {
+const carregado = () => {
+  document.getElementById("texto").focus();
   const urlParams = new URLSearchParams(location.search);
-  if (urlParams.has('texto')) {
-    document.getElementById("texto").value = urlParams.get('texto');
+  if (urlParams.has('aleatorio')) {
+
   }
+  if (urlParams.has('texto')) {
+    document.getElementById("citar-texto").innerHTML = urlParams.get('texto');
+    document.getElementById("texto").innerHTML = urlParams.get('texto');
+    if (urlParams.has('citar') && urlParams.get('citar') == 'true') {
+      document.getElementById("texto").style.display = "none";
+      document.getElementById("citar").style.display = "block";
+      if (urlParams.has('autor') && urlParams.get('autor') != "") {
+        document.getElementById("autor").innerHTML = urlParams.get('autor') + " e ";
+      }
+    }
+  }
+}
+
+const ajuda = () => {
+  const el = document.getElementById("texto");
+  const texto = el.innerHTML;
+  fetch("https://baconipsum.com/api/?type=meat-and-filler")
+    .then((response) => response.json())
+    .then((json) => {
+      const palavras = json[0].split(" ");
+      const indice = Math.floor(Math.random() * palavras.length);
+      const palavra = palavras[indice];
+      el.innerHTML = texto.replace(/\&nbsp;/g, " ").trim() + " " + palavra;
+    });
+}
+
+const apagar = () => {
+  window.location.assign("/");
 }
