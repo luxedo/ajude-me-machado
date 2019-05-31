@@ -15,21 +15,33 @@ const carregado = () => {
       }
     }
   }
-}
+};
 
 const ajuda = () => {
   const el = document.getElementById("texto");
-  const texto = el.innerHTML;
-  fetch("https://baconipsum.com/api/?type=meat-and-filler")
-    .then((response) => response.json())
-    .then((json) => {
-      const palavras = json[0].split(" ");
-      const indice = Math.floor(Math.random() * palavras.length);
-      const palavra = palavras[indice];
-      el.innerHTML = texto.replace(/\&nbsp;/g, " ").trim() + " " + palavra;
+  const texto = el.innerHTML.replace(/<br\/?>/g, "\n") || "Era uma vez...";
+  document.getElementById("modalCarregando").style.opacity = 1;
+  fetch("http://35.193.158.12/gpt_de_assis?q="+encodeURI(texto))
+    .then((response) => {
+      response.text()
+      .then((text) => {
+        let a = text
+          .substring(texto.length)
+          .replace(/(\\n|\\r)/g, "<br/>")
+          .replace(/[—]/g, "<br/>—")
+          .replace(/([:.!?;,])\n/g, "$1<br/>")
+          .replace(/(.*)[^.,:;?!]*$/g, "$1")
+          .replace(/\s[^.\s]+$/, "")
+          .replace(/(<br\/>)+/g, "<br/>")
+          .replace(/^(<br\/>)+/m, "")
+          .replace(/([:.!?;,])[^:.!?;,]*$/s, "$1");
+        console.log(a);
+        el.innerHTML += a;
+        document.getElementById("modalCarregando").style.opacity = 0;
+      });
     });
-}
+};
 
 const apagar = () => {
   window.location.assign("/");
-}
+};
